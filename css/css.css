@@ -1,11 +1,33 @@
 /* variable declarations */
 :root {
     --myapp-color-background: limegreen;
+
+    --myapp-header-height: 60px;
+
+    --myapp-header-background: rgb(60,60,60);
+
+    --myapp-footer-height: 50px;
+
+    --myapp-footer-background: rgb(15,15,15);
+
+    --myapp-main-background: rgb(45,45,45);
+
+    --myapp-imgbutton-size: 40px;
+
+    --myapp-imgbutton-imgsize: 30px;
+
+    --myapp-default-space: 10px;
+
+    --myapp-li-height: 70px;
+
+    --myapp-li-bordercolor: rgb(120,120,120);
+
+    --myapp-li-imgsize: 35px;
 }
 
 html, body {
     background-color: var(--myapp-color-background);
-    margin: 0px;
+    margin: 0;
     font-family: "Avenir Medium", sans-serif;
     color: white;
     width: 100%;
@@ -21,3 +43,177 @@ html, body {
     -moz-user-select: none;
     -webkit-user-select: none;
 }
+
+/*base structure*/
+
+header {
+    height: var(--myapp-header-height);
+    background-color: var(--myapp-header-background);
+}
+
+header h1{
+    margin: 0;
+    font-weight: normal;
+    line-height: var(--myapp-header-height);
+    font-size: 20pt;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.myapp-align-left{
+    float:left;
+}
+
+.myapp-align-right{
+    float:right;
+}
+
+.myapp-imgbutton{
+    background-color: transparent;
+    font-size: 0;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--myapp-imgbutton-imgsize) var(--myapp-imgbutton-imgsize);
+    height: var(--myapp-imgbutton-size);
+    width: var(--myapp-imgbutton-size);
+    filter: invert(90%);
+}
+
+header .myapp-imgbutton {
+    margin-top: calc((var(--myapp-header-height) - var(--myapp-imgbutton-size)) / 2);
+}
+footer .myapp-imgbutton {
+    margin-top: calc((var(--myapp-footer-height) - var(--myapp-imgbutton-size)) / 2);
+}
+
+.myapp-img-menu{
+    background-image: url("./img/png/menu_FILL0_wght400_GRAD0_opsz24.png");
+}
+
+.myapp-img-add{
+    background-image: url("./img/png/add_FILL0_wght400_GRAD0_opsz24.png");
+}
+
+.myapp-img-refresh {
+    background-image: url("./img/png/sync_FILL0_wght400_GRAD0_opsz24.png");
+}
+
+.myapp-img-remove {
+    background-image: url("./img/png/delete_FILL0_wght400_GRAD0_opsz24.png");
+}
+
+.myapp-img-edit {
+    background-image: url("./img/png/edit_FILL0_wght400_GRAD0_opsz24.png");
+}
+
+p{
+    margin: 0;
+    padding: var(--myapp-default-space);
+}
+
+main {
+    height: calc(100vh - (var(--myapp-header-height) + var(--myapp-footer-height)));
+    background-color: rgb(45,45,45);
+    overflow-y: scroll;
+}
+
+footer {
+    height: var(--myapp-header-height);
+    background-color: var(--myapp-header-background);
+}
+
+/* Listenansicht */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    height: var(--myapp-li-height);
+    font-size:18pt;
+    line-height: var(--myapp-li-height);
+    border-bottom: 1px solid var(--myapp-li-bordercolor);
+    padding-left: var(--myapp-default-space);
+}
+
+li h2 {
+    font-weight: normal;
+    font-size: 18pt;
+    margin: 0;
+    margin-left: var(--myapp-default-space);
+}
+
+li .myapp-imgbutton {
+        margin-top: calc((var(--myapp-li-height) - var(--myapp-imgbutton-size)) / 2);
+}
+
+
+li img {
+    height: var(--myapp-li-imgsize);
+    width: var(--myapp-li-imgsize);
+    margin-top: calc((var(--myapp-li-height) - var(--myapp-li-imgsize)) /2);
+    object-fit: cover;
+}
+
+.myapp-tiles li * {
+    display: none;
+}
+
+.myapp-tiles li img {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+/* tiles */
+.myapp-tiles li {
+    margin-left: var(--myapp-default-space);
+    margin-top: var(--myapp-default-space);
+    display: inline-block;
+    border: none;
+    --myapp-tiles-number-of-columns: 10;
+    --myapp-tile-size: calc((100vw - ((var(--myapp-tiles-number-of-columns) + 1 ) * var(--myapp-default-space))) / var(--myapp-tiles-number-of-columns));
+    width: var(--myapp-tile-size);
+    height: var(--myapp-tile-size);
+    padding: 0;
+    float: left;
+}
+
+@media (max-width: 400px) {
+    .myapp-tiles li {
+        --myapp-tiles-number-of-columns: 3;
+    }
+}
+
+@media (min-width: 400px) {
+    .myapp-tiles li {
+        --myapp-tiles-number-of-columns: 5;
+    }
+}
+
+@media (min-width: 500px) {
+    .myapp-tiles li {
+        --myapp-tiles-number-of-columns: 7;
+    }
+}
+
+@media (min-width: 600px) {
+    .myapp-tiles li img {
+        --myapp-tiles-number-of-columns: 10;
+    }
+}
+
+/* fading */
+.myapp-faded {
+    opacity: 0;
+    transition: opacity 3s;
+}
+
+main {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
