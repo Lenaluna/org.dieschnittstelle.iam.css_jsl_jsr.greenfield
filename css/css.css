@@ -25,14 +25,21 @@
     --myapp-li-imgsize: 35px;
 }
 
+
+
 html, body {
     background-color: var(--myapp-color-background);
     margin: 0;
     font-family: "Avenir Medium", sans-serif;
-    color: white;
+    /* (e) default text-color: black */
+    color: black;
+    /* (b) makes an element as wide as its parent */
     width: 100%;
+    /* (b) the element never becomes wider than the viewport, regardless of the parent's width */
     max-width: 100%;
+    /* (a) makes an element as high as its parent */
     height: 100%;
+    /* (a) the element never becomes higher than the viewport, regardless of the parent's height */
     max-height: 100%;
 }
 
@@ -113,8 +120,14 @@ p{
 }
 
 main {
+    /*
+    (a) The 'calc()' function is used to ensure that the main area of the view always takes up exactly the available height,
+    minus the heights of the header and footer. This ensures that the entire view is neither cut off in height.
+    */
     height: calc(100vh - (var(--myapp-header-height) + var(--myapp-footer-height)));
-    background-color: rgb(45,45,45);
+    /* (d) default background-color: white */
+    background-color: rgb(255, 255, 255);
+    /* (c) scroll vertical */
     overflow-y: scroll;
 }
 
@@ -217,3 +230,6 @@ main {
     transition: opacity 1s;
 }
 
+.myapp-template {
+    display: none;
+}
