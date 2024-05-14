@@ -4,42 +4,53 @@
 
     --myapp-header-height: 60px;
 
-    --myapp-header-background: rgb(60,60,60);
+    /* 1.(d) default background-color: white */
+    --myapp-header-background: rgb(255,255,255);
 
     --myapp-footer-height: 50px;
 
-    --myapp-footer-background: rgb(15,15,15);
+    /* 1.(d) default background-color: white */
+    --myapp-footer-background: rgb(255,255,255);
 
-    --myapp-main-background: rgb(45,45,45);
+    --myapp-main-background: rgb(255, 255, 255);
 
     --myapp-imgbutton-size: 40px;
 
+    --myapp-imgbutton-arrow-size: 15px;
+
     --myapp-imgbutton-imgsize: 30px;
 
-    --myapp-default-space: 10px;
+    --myapp-default-space: 8px;
 
-    --myapp-li-height: 70px;
+    --myapp-li-height: 85px;
 
-    --myapp-li-bordercolor: rgb(120,120,120);
+    --myapp-li-bordercolor: rgb(180,180,180);
 
-    --myapp-li-imgsize: 35px;
+    --myapp-li-imgsize: 60px;
+
+    /* 2.(c) the bottom edge of the header is provided with a shadow and a gray line. */
+    --myapp-header-border-bottom: 4px;
+
+    /* 3.(a) footer is delineated at the top by an orange border */
+    --myapp-footer-border-top-color: rgba(255,140,0);
+    --myapp-footer-border-top-height: 2px;
+
+    --myapp-header-spacer-div: 20px;
 }
-
-
 
 html, body {
     background-color: var(--myapp-color-background);
     margin: 0;
     font-family: "Avenir Medium", sans-serif;
-    /* (e) default text-color: black */
+    /* 1.(e) default text-color: black */
     color: black;
-    /* (b) makes an element as wide as its parent */
+    /* 1.(b) makes an element as wide as its parent */
     width: 100%;
-    /* (b) the element never becomes wider than the viewport, regardless of the parent's width */
+    /* 1.(b) the element never becomes wider than the viewport, regardless of the parent's width */
     max-width: 100%;
-    /* (a) makes an element as high as its parent */
+    /* 1.(a) makes an element as high as its parent */
     height: 100%;
-    /* (a) the element never becomes higher than the viewport, regardless of the parent's height */
+    /* 1.(a) the element never becomes higher than the viewport, regardless of the parent's height */
     max-height: 100%;
 }
 
@@ -58,6 +69,11 @@ header {
     background-color: var(--myapp-header-background);
 }
 
+/* 2.(c) the bottom edge of the header is provided with a gray line. */
+.header-with-borderBottom {
+    border-bottom: var(--myapp-header-border-bottom) solid var(--myapp-li-bordercolor);
+}
+
 header h1{
     margin: 0;
     font-weight: normal;
@@ -65,6 +81,22 @@ header h1{
     font-size: 20pt;
     text-transform: uppercase;
     display: inline-block;
+}
+
+/* 4.(a) buffer is visible when the view isn't scrolled */
+.buffer{
+    height: var(--myapp-header-spacer-div);
+    background-color: var(--myapp-li-bordercolor);
+}
+
+/* 4.(a) buffer is moved out of the visible area when the view is scrolled */
+.hide{
+    display: none;
+}
+
+/* 4.(a) update height main  */
+.mainScrollHeight {
+    height: calc(100vh - (var(--myapp-header-spacer-div) + 2 * var(--myapp-footer-height)) + 2 * var(--myapp-footer-border-top-height));
 }
 
 .myapp-align-left{
@@ -84,89 +116,171 @@ header h1{
     background-size: var(--myapp-imgbutton-imgsize) var(--myapp-imgbutton-imgsize);
     height: var(--myapp-imgbutton-size);
     width: var(--myapp-imgbutton-size);
-    filter: invert(90%);
+    /* By using both of these instructions, you ensure that the filter works in as many browsers as possible. This includes both modern and older browsers. */
+    filter: invert(60%);
+    -webkit-filter: invert(60%);
 }
 
+/* 2.(d) vertically centered */
 header .myapp-imgbutton {
     margin-top: calc((var(--myapp-header-height) - var(--myapp-imgbutton-size)) / 2);
 }
+
+/* 3.(c) vertically centered */
 footer .myapp-imgbutton {
-    margin-top: calc((var(--myapp-footer-height) - var(--myapp-imgbutton-size)) / 2);
+    margin-top: calc(((var(--myapp-footer-height) - var(--myapp-imgbutton-size)) / 2) - var(--myapp-footer-border-top-height));
 }
 
+/* 2.(a) sandwich icon */
 .myapp-img-menu{
     background-image: url("./img/png/menu_FILL0_wght400_GRAD0_opsz24.png");
 }
 
+/* 2.(b) tale icon */
+.myapp-img-tale {
+    background-image: url("./img/png/grid_view_FILL0_wght400_GRAD0_opsz24.png");
+}
+
+/* 2.(b) + icon */
 .myapp-img-add{
     background-image: url("./img/png/add_FILL0_wght400_GRAD0_opsz24.png");
 }
 
+/* 3.(b) logout icon */
+.myapp-img-logout {
+    background-image: url("./img/png/logout_FILL0_wght400_GRAD0_opsz24.png");
+}
+
+/* 3.(b) refresh icon */
 .myapp-img-refresh {
     background-image: url("./img/png/sync_FILL0_wght400_GRAD0_opsz24.png");
 }
 
-.myapp-img-remove {
-    background-image: url("./img/png/delete_FILL0_wght400_GRAD0_opsz24.png");
+.myapp-img-arrow {
+    background-image: url("./img/png/play_arrow_FILL0_wght400_GRAD0_opsz24.png");
 }
 
-.myapp-img-edit {
-    background-image: url("./img/png/edit_FILL0_wght400_GRAD0_opsz24.png");
-}
-
-p{
-    margin: 0;
-    padding: var(--myapp-default-space);
+.myapp-img-options {
+    background-image: url("./img/png/more_vert_FILL0_wght400_GRAD0_opsz24.png");
 }
 
 main {
     /*
-    (a) The 'calc()' function is used to ensure that the main area of the view always takes up exactly the available height,
+    1.(a) The 'calc()' function is used to ensure that the main area of the view always takes up exactly the available height,
     minus the heights of the header and footer. This ensures that the entire view is neither cut off in height.
     */
-    height: calc(100vh - (var(--myapp-header-height) + var(--myapp-footer-height)));
-    /* (d) default background-color: white */
-    background-color: rgb(255, 255, 255);
-    /* (c) scroll vertical */
+    height: calc(100vh - (var(--myapp-header-height) + var(--myapp-header-border-bottom) + var(--myapp-header-spacer-div) +  var(--myapp-footer-height) + var(--myapp-footer-border-top-height)));
+
+    /* 1.(d) default background-color: white */
+    background-color: var(--myapp-main-background);
+    /* 1.(c) scroll vertical */
     overflow-y: scroll;
 }
 
 footer {
-    height: var(--myapp-header-height);
+    height: calc(var(--myapp-header-height) - var(--myapp-footer-border-top-height));
+    /* 1.(d) default background-color: white */
     background-color: var(--myapp-header-background);
+    /* 3.(a) footer is delineated at the top by an orange border */
+    border-top: var(--myapp-footer-border-top-height) solid var(--myapp-footer-border-top-color);
 }
 
-/* Listenansicht */
 ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+/* 4.(c) no top line on the first li */
+ul li:first-child {
+    border-top: none;
+}
+
 li {
+    display: flex;
     height: var(--myapp-li-height);
-    font-size:18pt;
-    line-height: var(--myapp-li-height);
+    line-height: 0px;
+    /* 4.(b) list items are separated from each other by a gray border line. */
     border-bottom: 1px solid var(--myapp-li-bordercolor);
+    /* 4(d) image and menu icon has the same space on the left side */
     padding-left: var(--myapp-default-space);
 }
 
 li h2 {
     font-weight: normal;
-    font-size: 18pt;
+    font-size: 13px;
     margin: 0;
     margin-left: var(--myapp-default-space);
+    margin-top: 20px;
 }
 
-li .myapp-imgbutton {
-        margin-top: calc((var(--myapp-li-height) - var(--myapp-imgbutton-size)) / 2);
+div .myapp-Text {
+    margin: 0;
+    margin-left: var(--myapp-default-space);
+    margin-top: var(--myapp-default-space);
+    font-weight: normal;
+    font-size: 13px;
+    text-align: left;
+    color: var(--myapp-li-bordercolor);
 }
 
+.container {
+    margin-top: var(--myapp-default-space);
+}
 
-li img {
+.containerArrow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    margin-top: var(--myapp-default-space);
+}
+
+.containerOptions {
+    width: 100%;
+    position: relative;
+}
+
+.myapp-imgbuttonArrow {
+    padding: 0;
+    margin: 0;
+    margin-left: calc(var(--myapp-default-space) - 2px);
+    background-color: transparent;
+    font-size: 0;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--myapp-imgbutton-imgsize) var(--myapp-imgbutton-imgsize);
+    height: calc(var(--myapp-imgbutton-arrow-size) + 10px);
+    width: var(--myapp-imgbutton-arrow-size);
+    /* By using both of these instructions, you ensure that the filter works in as many browsers as possible. This includes both modern and older browsers. */
+    filter: invert(60%);
+    -webkit-filter: invert(60%);
+}
+
+.myapp-imgbuttonOptions {
+    position: absolute;
+    bottom: 3px;
+    right: 8px;
+}
+
+.datePosition {
+    position: absolute;
+    top: 5px;
+    right: 24px;
+}
+.myapp-likes {
+    margin-right: 10px;
+    margin-left: 5px;
+    /* By using both of these instructions, you ensure that the filter works in as many browsers as possible. This includes both modern and older browsers. */
+    filter: invert(60%);
+    -webkit-filter: invert(60%);
+}
+
+/* 4.(e) image display is always square, distortion-free, and has a fixed size, regardless of the image template */
+li div img {
+    margin-top: var(--myapp-default-space);
     height: var(--myapp-li-imgsize);
     width: var(--myapp-li-imgsize);
-    margin-top: calc((var(--myapp-li-height) - var(--myapp-li-imgsize)) /2);
     object-fit: cover;
 }
 
@@ -174,7 +288,7 @@ li img {
     display: none;
 }
 
-.myapp-tiles li img {
+.myapp-tiles li div img {
     margin: 0;
     height: 100%;
     width: 100%;
@@ -214,7 +328,7 @@ li img {
 }
 
 @media (min-width: 600px) {
-    .myapp-tiles li img {
+    .myapp-tiles li div img {
         --myapp-tiles-number-of-columns: 10;
     }
 }
@@ -233,3 +347,5 @@ main {
 .myapp-template {
     display: none;
 }
+
+
