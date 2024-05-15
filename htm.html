@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<body class="myapp-tiles">
+<body class="myapp-tiles myapp-list">
 <!-- 2.(c) class: bottom edge of the header is provided with a gray line -->
 <header class="header-with-borderBottom">
     <!--2.(a) class: sandwich icon is aligned to the left -->
     <!--4.(d) menu icon is aligned at the top left corner -->
-    <button class="myapp-imgbutton myapp-img-menu myapp-align-left" >menu</button>
+    <button class="myapp-imgbutton myapp-img-menu myapp-align-left">menu</button>
     <!--2.(a) heading follows the sandwichIcon to the left -->
     <h1>Medien</h1>
     <!--2.(b)  class: + icon is aligned to the right -->
@@ -22,11 +22,9 @@
      </template>
     -->
         <!-- 4(d) image is aligned at the top left corner -->
-        <li class = "myapp-template">
-            <div>
+        <li class = "myapp-template myapp-liRightBlock">
                 <img class="myapp-align-left" src="./data/img/100_200.jpeg"/>
-            </div>
-            <div class="container">
+            <div class="container hide-in-tiles">
                 <p class = "myapp-Text">lorempixel.com</p>
                 <h2>lirem</h2>
                 <div class="containerArrow">
@@ -34,10 +32,10 @@
                     <p class="myapp-likes">0</p>
                 </div>
             </div>
-            <div class="containerOptions">
+          <!--  <div class="containerOptions hide-in-tiles"> -->
                 <button class="myapp-imgbuttonOptions myapp-imgbutton myapp-img-options">options</button>
-                <p id="dateRandom" class="datePosition">date</p>
-            </div>
+                <p id="dateRandom" class="datePosition hide-in-tiles">date</p>
+         <!--   </div> -->
         </li>
     <!--<li class = "myapp-template"><img class="myapp-align-left" src="./data/img/100_200.jpeg"/><h2 class="myapp-align-left">lirem</h2><button class="myapp-imgbutton myapp-img-edit myapp-align-right">edit</button></li>
         <li><img class="myapp-align-left" src="data/img/100_100.jpeg"/><h2 class="myapp-align-left">dopsum</h2><button class="myapp-imgbutton myapp-img-edit myapp-align-right">dopsum</h2></li>

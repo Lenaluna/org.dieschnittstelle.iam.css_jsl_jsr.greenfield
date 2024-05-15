@@ -11,7 +11,7 @@ class ViewController {
         this.prepareFading();
         this.prepareListitemSelection();
         this.prepareAddingNewListitems();
-        this.loadAndDisplayListitems();
+     //   this.loadAndDisplayListitems();
         this.setupScrollListener();
       //  this.setupRandomDate();
     }
@@ -68,11 +68,9 @@ class ViewController {
                 return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
             }
 
-           // let randomDate = getRandomDate(new Date(2024, 0, 1), new Date());
+            const randomDate = getRandomDate(new Date(2024, 0, 1), new Date());
 
-          //  let dateString = randomDate.toDateString();
-
-            this.addNewListitem({src: "./data/img/" + selectedSrc, title: selectedTitle});
+            this.addNewListitem({src: "./data/img/" + selectedSrc, title: selectedTitle, date: randomDate });
             index++;
         }
     }
@@ -109,18 +107,14 @@ class ViewController {
         const h2 = li.querySelector("h2");
         h2.textContent = obj.title;
 
-       // document.getElementById('dateRandom').innerHTML = obj.date;
-       // document.getElementById('dateRandom').innerHTML = randomDate.toDateString();
-
-        /*
-        // D) html templates: SoC preserved (as in C), efficient, transparent (slightly less than C), standard
-        console. log("cloning template content: ", this.cloneListelenent.content);
-        const li = document.importNode(this.cloneListelement.content, true).querySelector ("li");
-        console.log("cloned li element: ", li);
-        li.querySelector ("img").src = obj.src;
-        li.querySelector ("h2"). textContent = obj.title;
-        */
+        const dateElement = li.querySelector("#dateRandom");
+        if (obj.date) {
+            dateElement.textContent = obj.date.toDateString();
+        } else {
+            dateElement.textContent = ""; // oder ein Standarddatum setzen
+        }
         this.listRoot.appendChild(li);
+
     }
 
     loadAndDisplayListitems() {
